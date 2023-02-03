@@ -23,29 +23,29 @@ def processWatermark():
 
     water_mark = Image.open("logo_watermark/Logo.png")
 
-    water_mark.thumbnail((min(img.size) // 4, min(img.size) // 4))
+    water_mark.thumbnail((max(img.size) // 4, min(img.size) // 4))
     water_mark_w, water_mark_h = map(int, water_mark.size)
 
     # Căn phải dưới
-    x = img_w - water_mark_w + img_w // 50
-    y = img_h - water_mark_h + img_h // 50
+    x = img_w - water_mark_w - img_w // 50
+    y = img_h - water_mark_h - img_h // 50
 
     addWaterMark(x, y, "bottom_right", water_mark)
 
     # Căn trái dưới
-    x = - img_w // 50
-    y = img_h - water_mark_h + img_h // 50
+    x = img_w // 50
+    y = img_h - water_mark_h - img_h // 50
 
     addWaterMark(x, y, "bottom_left", water_mark)
 
     # Căn phải trên
-    x = img_w - water_mark_w + img_w // 50
-    y = - img_h // 50
+    x = img_w - water_mark_w - img_w // 50
+    y = img_h // 50
 
     addWaterMark(x, y, "upper_right", water_mark)
 
     # Căn trái trên
-    x = - img_w // 50
-    y = - img_h // 50
+    x = img_w // 50
+    y = img_h // 50
 
     addWaterMark(x, y, "upper_left", water_mark)
