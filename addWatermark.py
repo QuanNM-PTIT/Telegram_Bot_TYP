@@ -1,16 +1,16 @@
 from PIL import Image
 
 def addWaterMark(x, y, pos, water_mark):
-    transparent = Image.open("output.jpg")
+    transparent = Image.open("output/output.jpg")
     wm_position = (x, y)
     transparent.paste(im = water_mark, box = wm_position, mask = water_mark)
-    transparent.save("watermark_" + pos + ".jpg")
+    transparent.save("saved_watermark/watermark_" + pos + ".jpg")
 
 def processWatermark():
-    img = Image.open("output.jpg")
+    img = Image.open("output/output.jpg")
     img_w, img_h = map(int, img.size)
 
-    water_mark = Image.open("Logo.png")
+    water_mark = Image.open("logo_watermark/Logo.png")
 
     # Căn giữa ảnh
     water_mark.thumbnail((min(img.size) // 2, min(img.size) // 2))
@@ -21,7 +21,7 @@ def processWatermark():
 
     addWaterMark(x, y, "mid", water_mark)
 
-    water_mark = Image.open("Logo.png")
+    water_mark = Image.open("logo_watermark/Logo.png")
 
     water_mark.thumbnail((min(img.size) // 4, min(img.size) // 4))
     water_mark_w, water_mark_h = map(int, water_mark.size)

@@ -32,47 +32,47 @@ def add_logo_or_watermark_command(update, context):
 
 
 def logoUpperLeft(update, context):
-    update.message.bot.send_document(document=open("logo_upper_left.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_logo/logo_upper_left.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def logoUpperRight(update, context):
-    update.message.bot.send_document(document=open("logo_upper_right.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_logo/logo_upper_right.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def logoBottomLeft(update, context):
-    update.message.bot.send_document(document=open("logo_bottom_left.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_logo/logo_bottom_left.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def logoBottomRight(update, context):
-    update.message.bot.send_document(document=open("logo_bottom_right.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_logo/logo_bottom_right.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def watermarkUpperLeft(update, context):
-    update.message.bot.send_document(document=open("watermark_upper_left.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_watermark/watermark_upper_left.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def watermarkUpperRight(update, context):
-    update.message.bot.send_document(document=open("watermark_upper_right.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_watermark/watermark_upper_right.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def watermarkBottomLeft(update, context):
-    update.message.bot.send_document(document=open("watermark_bottom_left.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_watermark/watermark_bottom_left.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def watermarkBottomRight(update, context):
-    update.message.bot.send_document(document=open("watermark_bottom_right.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_watermark/watermark_bottom_right.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
 def watermarkMiddle(update, context):
-    update.message.bot.send_document(document=open("watermark_mid.jpg", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("saved_watermark/watermark_mid.jpg", "rb"), chat_id=update.message.chat.id)
     update.message.reply_text("Đã sẵn sàng cho ảnh tiếp theo!")
 
 
@@ -123,7 +123,7 @@ def addWatermark(update, context):
 
 def file_handler(update, context):
     file = update.message.document.get_file()
-    file.download("output.jpg")
+    file.download("output/output.jpg")
 
     update.message.reply_text("Tải lên thành công!")
 
@@ -135,7 +135,7 @@ def file_handler(update, context):
 def image_handler(update, context):
     file = update.message.photo[-1].file_id
     obj = context.bot.get_file(file)
-    obj.download("output.jpg")
+    obj.download("output/output.jpg")
 
     update.message.reply_text("Tải lên thành công!")
 
@@ -162,15 +162,15 @@ def get_logo_command(update, context):
 
 
 def get_round_logo(update, context):
-    update.message.bot.send_document(document=open("Round_Logo.png", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("Logo_des/Round_Logo.png", "rb"), chat_id=update.message.chat.id)
 
 
 def get_square_logo(update, context):
-    update.message.bot.send_document(document=open("Square_Logo.png", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("Logo_des/Square_Logo.png", "rb"), chat_id=update.message.chat.id)
 
 
 def get_logo_transparent(update, context):
-    update.message.bot.send_document(document=open("Logo_Transparent.png", "rb"), chat_id=update.message.chat.id)
+    update.message.bot.send_document(document=open("Logo_des/Logo_Transparent.png", "rb"), chat_id=update.message.chat.id)
 
 def main():
     print("Started")

@@ -1,15 +1,15 @@
 from PIL import Image
 
-logo = Image.open("Logo_bg.png")
+logo = Image.open("logo_watermark/Logo_bg.png")
 
 def addLogo(x, y, pos):
-    transparent = Image.open("output.jpg")
+    transparent = Image.open("output/output.jpg")
     wm_position = (x, y)
     transparent.paste(im = logo, box = wm_position, mask = logo)
-    transparent.save("logo_" + pos + ".jpg")
+    transparent.save("saved_logo/logo_" + pos + ".jpg")
 
 def processLogo():
-    img = Image.open("output.jpg")
+    img = Image.open("output/output.jpg")
     img_w, img_h = map(int, img.size)
 
     logo.thumbnail((min(img.size) // 5, min(img.size) // 5))
