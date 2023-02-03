@@ -8,13 +8,15 @@ updater = Updater(TOKEN, use_context=True)
 dp = updater.dispatcher
 
 def start_command(update, context):
-    buttons = [[KeyboardButton("/Add_logo_or_watermark")]]
+    buttons = [[KeyboardButton("/Add_logo_or_watermark")],
+               [KeyboardButton("/Get_logo_TYP")]]
 
     context.bot.send_message(chat_id=update.message.chat.id,
                              reply_markup=ReplyKeyboardMarkup(buttons, resize_keyboard=True),
                              text="Mời bạn chọn chức năng!")
 
     dp.add_handler(CommandHandler("Add_logo_or_watermark", add_logo_or_watermark_command))
+    dp.add_handler(CommandHandler("Get_logo_TYP", get_logo_command))
 
 def add_logo_or_watermark_command(update, context):
     name = update.message.chat.first_name
@@ -142,6 +144,33 @@ def image_handler(update, context):
                              reply_markup=ReplyKeyboardMarkup(buttons, resize_keyboard=True),
                              text="Bạn muốn thêm logo hay watermark?")
 
+
+def get_logo_command(update, context):
+    buttons = [[KeyboardButton("/Round_logo")],
+               [KeyboardButton("/Logo_transparent")],
+               [KeyboardButton("/Square_logo")]]
+
+    context.bot.send_message(chat_id=update.message.chat.id,
+                             reply_markup=ReplyKeyboardMarkup(buttons, resize_keyboard=True),
+                             text="Bạn muốn lấy logo nào?")
+
+    dp.add_handler(CommandHandler("Round_logo", get_round_logo))
+
+    dp.add_handler(CommandHandler("Logo_transparent", get_logo_transparent))
+
+    dp.add_handler(CommandHandler("Square_logo", get_square_logo))
+
+
+def get_round_logo(update, context):
+    update.message.bot.send_document(document=open("Round_Logo.png", "rb"), chat_id=update.message.chat.id)
+
+
+def get_square_logo(update, context):
+    update.message.bot.send_document(document=open("Square_Logo.png", "rb"), chat_id=update.message.chat.id)
+
+
+def get_logo_transparent(update, context):
+    update.message.bot.send_document(document=open("Logo_Transparent.png", "rb"), chat_id=update.message.chat.id)
 
 def main():
     print("Started")
